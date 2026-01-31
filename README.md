@@ -6,22 +6,24 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-53%20passing-brightgreen.svg)](tests/)
 
+English | [简体中文](README.zh-CN.md)
+
 ---
 
 ## What is GAIA?
 
-**GAIA** (Generate → Analyze → Implement → Acceptance) is a systematic framework for solving complex problems with AI collaboration. It transforms AI from a simple "executor" into an "analyst, architect, and craftsman" through a structured four-phase approach.
+GAIA (Generate → Analyze → Implement → Acceptance) is a systematic framework for solving complex problems with AI collaboration. It transforms AI from a simple "executor" into an "analyst, architect, and craftsman" through a structured four-phase approach.
 
-**In one sentence**: GAIA is a working protocol that elevates AI collaboration from ad-hoc conversations to systematic problem-solving.
+In one sentence: GAIA is a working protocol that elevates AI collaboration from ad-hoc conversations to systematic problem-solving.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
-│   ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐   │
-│   │  G: Gen │ → │  A: Ana │ → │  I: Imp │ → │  A: Acc │   │
-│   │Generate │   │ Analyze │   │Implement│   │Acceptance│  │
-│   └─────────┘   └─────────┘   └─────────┘   └─────────┘   │
-│    Expert Mind    Architect Mind   Craftsman Mind   QA Mind │
+│   ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌──────────┐    │
+│   │  G: Gen │ → │  A: Ana │ → │  I: Imp │ → │  A: Acc  │    │
+│   │Generate │   │ Analyze │   │Implement│   │Acceptance│    │
+│   └─────────┘   └─────────┘   └─────────┘   └──────────┘    │
+│  Expert Mind    Architect Mind   Craftsman Mind   QA Mind   │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -33,29 +35,29 @@
 ### 🎯 Four-Phase Execution Model
 
 | Phase | Mindset | Output |
-|-------|---------|--------|
-| **G: Generate** | Expert | Solution outline |
-| **A: Analyze** | Architect | MVP definition & priorities |
-| **I: Implement** | Craftsman | Deliverable artifacts |
-| **A: Acceptance** | QA | Validation report & evolution record |
+| ------- | --------- | -------- |
+| G: Generate | Expert | Solution outline |
+| A: Analyze | Architect | MVP definition & priorities |
+| I: Implement | Craftsman | Deliverable artifacts |
+| A: Acceptance | QA | Validation report & evolution record |
 
 ### 🧩 Core Modules
 
-- **`gaia_core`** - Execution engine, state management, phase executors
-- **`gaia_skills`** - Skill installation, evolution tracking, repository
-- **`gaia_knowledge`** - Knowledge graph, semantic search, pattern library
-- **`gaia_templates`** - Template engine with built-in templates
-- **`gaia_workflow`** - YAML DSL workflow orchestration
-- **`gaia_integration`** - MCP gateway, unified API, adapters
-- **`gaia_cli`** - Command-line interface
-- **`gaia_web`** - FastAPI backend service
+- `gaia_core` - Execution engine, state management, phase executors
+- `gaia_skills` - Skill installation, evolution tracking, repository
+- `gaia_knowledge` - Knowledge graph, semantic search, pattern library
+- `gaia_templates` - Template engine with built-in templates
+- `gaia_workflow` - YAML DSL workflow orchestration
+- `gaia_integration` - MCP gateway, unified API, adapters
+- `gaia_cli` - Command-line interface
+- `gaia_web` - FastAPI backend service
 
 ### 📊 Knowledge Management
 
-- **Knowledge Graph** - Track relationships between skills, tasks, and experiences
-- **Semantic Search** - Document indexing with query expansion
-- **Pattern Library** - Best practices and anti-patterns
-- **Evolution Tracking** - Record effective parameters and lessons learned
+- Knowledge Graph - Track relationships between skills, tasks, and experiences
+- Semantic Search - Document indexing with query expansion
+- Pattern Library - Best practices and anti-patterns
+- Evolution Tracking - Record effective parameters and lessons learned
 
 ---
 
@@ -65,7 +67,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/gaia.git
+git clone https://github.com/iannil/gaia.git
 cd gaia
 
 # Install dependencies
@@ -124,7 +126,7 @@ print(f"Tasks: {status['tasks']['total']}")
 ## Documentation
 
 | Topic | Link |
-|-------|------|
+| ------- | ------ |
 | Framework Overview | [docs/01-gaia-framework/overview.md](docs/01-gaia-framework/overview.md) |
 | Core Principles | [docs/01-gaia-framework/principles.md](docs/01-gaia-framework/principles.md) |
 | Getting Started | [docs/getting-started.md](docs/getting-started.md) |
@@ -200,6 +202,7 @@ steps:
 ```
 
 Run workflow:
+
 ```bash
 gaia workflow run examples/workflows/gaia-full-flow.yaml
 ```
@@ -299,6 +302,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 ## Acknowledgments
 
 Inspired by:
+
 - [Anthropic Skills](https://github.com/anthropics/skills)
 - [ComposioHQ](https://github.com/ComposioHQ/composio)
 - [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)
@@ -308,14 +312,14 @@ Inspired by:
 
 ## Links
 
-- **Documentation**: [docs/](docs/)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/gaia-framework/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/gaia-framework/discussions)
+- Documentation: [docs/](docs/)
+- Issues: [GitHub Issues](https://github.com/iannil/gaia-framework/issues)
+- Discussions: [GitHub Discussions](https://github.com/iannil/gaia-framework/discussions)
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for the AI collaboration community**
+Made with ❤️ for the AI collaboration community
 
 </div>
