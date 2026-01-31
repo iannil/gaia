@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gaia-framework.dev/schemas/evolution.json",
+  "title": "GAIA Skill Evolution Record",
+  "description": "Schema for recording skill evolution and learning experiences",
+  "type": "object",
+  "required": ["skill_id", "skill_name", "version", "created_at", "updated_at"],
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "description": "Unique identifier for the skill"
+    },
+    "skill_name": {
+      "type": "string",
+      "description": "Human-readable name of the skill"
+    },
+    "version": {
+      "type": "string",
+      "description": "Current version of the skill",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the skill was first created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of what the skill does"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["cli-tool", "api-client", "code-generator", "documentation", "utility", "other"],
+      "description": "Category of the skill"
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Tags for discovery and categorization"
+    },
+    "effective_parameters": {
+      "type": "object",
+      "description": "Parameters that have proven effective in practice",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "value": {},
+          "tested_at": {"type": "string", "format": "date-time"},
+          "use_case": {"type": "string"},
+          "performance_notes": {"type": "string"}
+        }
+      }
+    },
+    "success_patterns": {
+      "type": "array",
+      "description": "Documented patterns that lead to success",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pattern": {"type": "string"},
+          "context": {"type": "string"},
+          "outcome": {"type": "string"},
+          "documented_at": {"type": "string", "format": "date-time"}
+        }
+      }
+    },
+    "anti_patterns": {
+      "type": "array",
+      "description": "Common pitfalls to avoid",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pattern": {"type": "string"},
+          "why_fails": {"type": "string"},
+          "alternative": {"type": "string"}
+        }
+      }
+    },
+    "usage_history": {
+      "type": "array",
+      "description": "Record of usage sessions",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {"type": "string", "format": "date-time"},
+          "task": {"type": "string"},
+          "parameters": {},
+          "outcome": {"type": "string"},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "Other skills or tools this depends on",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "version": {"type": "string"},
+          "type": {"type": "string", "enum": ["skill", "package", "tool"]}
+        }
+      }
+    },
+    "quality_metrics": {
+      "type": "object",
+      "description": "Quality and maturity metrics",
+      "properties": {
+        "completeness": {"type": "number", "minimum": 0, "maximum": 5},
+        "documentation_quality": {"type": "number", "minimum": 0, "maximum": 5},
+        "usability": {"type": "number", "minimum": 0, "maximum": 5},
+        "stability": {"type": "number", "minimum": 0, "maximum": 5}
+      }
+    },
+    "maintenance_status": {
+      "type": "string",
+      "enum": ["active", "stable", "deprecated", "experimental"],
+      "description": "Current maintenance status of the skill"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional custom metadata",
+      "additionalProperties": true
+    }
+  }
+}

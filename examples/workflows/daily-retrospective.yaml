@@ -1,0 +1,70 @@
+# 每日复盘工作流
+
+id: daily-retrospective
+name: 每日复盘
+description: 记录每日工作复盘
+version: 1.0
+
+variables:
+  date: ""
+  achievements: ""
+  improvements: ""
+  action_items: ""
+
+triggers:
+  - type: schedule
+    config:
+      cron: "0 18 * * *"  # 每天 18:00
+
+steps:
+  # 生成复盘文档
+  - id: create_retro
+    name: 生成复盘文档
+    action: template.render
+    parameters:
+      template_id: retrospective
+      values:
+        project_name: My Project
+        sprint: Daily
+        date: $date
+
+  # 记录成就
+  - id: record_achievements
+    name: 记录成就
+    action: gaia.evolve.record
+    depends_on:
+      - create_retro
+    parameters:
+      key: achievements
+      value: $achievements
+
+  # 记录改进点
+  - id: record_improvements
+    name: 记录改进点
+    action: gaia.evolve.record
+    depends_on:
+      - create_retro
+    parameters:
+      key: improvements
+      value: $improvements
+
+  # 记录行动项
+  - id: record_actions
+    name: 记录行动项
+    action: gaia.evolve.record
+    depends_on:
+      - create_retro
+    parameters:
+      key: action_items
+      value: $action_items
+
+  # 导出到文件
+  - id: export
+    name: 导出复盘
+    action: gaia.evolve.export
+    depends_on:
+      - record_achievements
+      - record_improvements
+      - record_actions
+    parameters:
+      output: retrospectives/daily-$date.json

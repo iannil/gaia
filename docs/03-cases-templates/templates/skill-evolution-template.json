@@ -1,0 +1,76 @@
+{
+  "skill_name": "skill-name",
+  "display_name": "Skill Display Name",
+  "version": "1.0.0",
+  "description": "Brief description of what this skill does",
+  "last_updated": "2025-01-31",
+  "created_at": "2025-01-31",
+
+  "usage_history": [
+    {
+      "date": "2025-01-31",
+      "project": "project-name",
+      "context": "Brief description of how the skill was used",
+      "effective_params": {
+        "param_name": "value",
+        "another_param": "value"
+      },
+      "performance": {
+        "execution_time": "2s",
+        "quality": "high"
+      },
+      "lessons_learned": [
+        "Key insight 1 from this usage",
+        "Key insight 2 from this usage"
+      ]
+    }
+  ],
+
+  "pitfalls": [
+    {
+      "issue": "Description of the problem",
+      "symptoms": "What you observe when it happens",
+      "solution": "How to fix or avoid it",
+      "first_encountered": "2025-01-31"
+    }
+  ],
+
+  "best_practices": [
+    {
+      "practice": "Description of best practice",
+      "rationale": "Why this is recommended",
+      "example": "Concrete example if applicable"
+    }
+  ],
+
+  "effective_parameters": [
+    {
+      "name": "param-name",
+      "description": "What this parameter does",
+      "recommended_values": ["value1", "value2"],
+      "notes": "Additional notes about this parameter"
+    }
+  ],
+
+  "dependencies": [
+    {
+      "name": "dependency-name",
+      "version": ">=1.0.0",
+      "purpose": "Why this dependency is needed"
+    }
+  ],
+
+  "metadata": {
+    "author": "author-name",
+    "source": "Where this skill came from (e.g., anthropics/skills, github, custom)",
+    "source_url": "https://...",
+    "trust_level": "high/medium/low",
+    "last_verified": "2025-01-31"
+  },
+
+  "tags": [
+    "category1",
+    "category2",
+    "use-case"
+  ]
+}

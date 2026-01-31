@@ -1,0 +1,48 @@
+# Skill 发现和安装工作流
+
+id: skill-discovery
+name: Skill 发现和安装
+description: 自动发现并安装相关 Skills
+version: 1.0
+
+variables:
+  search_query: authentication
+
+triggers:
+  - type: manual
+
+steps:
+  # 搜索官方 Skills
+  - id: search_official
+    name: 搜索官方 Skills
+    action: skill.search
+    parameters:
+      query: $search_query
+
+  # 安装 Skill
+  - id: install_skill
+    name: 安装找到的 Skill
+    action: skill.install
+    depends_on:
+      - search_official
+    condition: $search_official.found
+    parameters:
+      repo: anthropics/skills-auth
+      id: auth-skill
+
+  # 记录演化数据
+  - id: record_evolution
+    name: 记录安装经验
+    action: gaia.evolve.record
+    depends_on:
+      - install_skill
+    parameters:
+      key: installed_skills
+      value: $install_skill.skill_id
+
+  # 列出所有 Skills
+  - id: list_all
+    name: 列出已安装 Skills
+    action: skill.list
+    depends_on:
+      - record_evolution

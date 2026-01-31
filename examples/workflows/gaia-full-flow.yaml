@@ -1,0 +1,69 @@
+# GAIA 完整流程工作流
+# 从 Phase G 到 Phase A 的完整执行
+
+id: gaia-full-flow
+name: GAIA 完整流程
+description: 执行完整的 GAIA G→A→I→A 流程
+version: 1.0
+
+# 全局变量
+variables:
+  project_name: my-project
+  problem_statement: 需要实现用户认证功能
+
+# 触发器
+triggers:
+  - type: manual
+  - type: event
+    config:
+      event: gaia.start
+
+# 步骤定义
+steps:
+  # Phase G: 生成
+  - id: generate
+    name: 启动 Phase G
+    action: gaia.phase.generate
+    parameters:
+      problem: $problem_statement
+      path: market
+
+  # Phase A: 分析
+  - id: analyze
+    name: 启动 Phase A
+    action: gaia.phase.analyze
+    depends_on:
+      - generate
+    parameters:
+      mvp: |
+        MVP 定义:
+        P0 (核心):
+        - 邮箱+密码登录
+        - JWT Token 验证
+
+  # Phase I: 实现
+  - id: implement
+    name: 启动 Phase I
+    action: gaia.phase.implement
+    depends_on:
+      - analyze
+
+  # Phase A: 验收
+  - id: accept
+    name: 启动 Phase A 验收
+    action: gaia.phase.acceptance
+    depends_on:
+      - implement
+    parameters:
+      criteria:
+        - 登录功能正常
+        - Token 验证正常
+
+  # 导出演化记录
+  - id: export_evolution
+    name: 导出演化记录
+    action: gaia.evolve.export
+    depends_on:
+      - accept
+    parameters:
+      output: evolution.json

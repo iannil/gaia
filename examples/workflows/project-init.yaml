@@ -1,0 +1,52 @@
+# 项目初始化工作流
+
+id: project-init
+name: 项目初始化
+description: 使用 GAIA 初始化新项目
+version: 1.0
+
+variables:
+  project_name: ""
+  problem_statement: ""
+
+triggers:
+  - type: manual
+
+steps:
+  # 生成 PRD
+  - id: create_prd
+    name: 生成 PRD 文档
+    action: template.render
+    parameters:
+      template_id: prd
+      values:
+        product_name: $project_name
+        version: 1.0
+
+  # 初始化 GAIA 项目
+  - id: init_gaia
+    name: 初始化 GAIA
+    action: gaia.init
+    depends_on:
+      - create_prd
+    parameters:
+      project: $project_name
+
+  # 启动 Phase G
+  - id: start_phase_g
+    name: 启动 Phase G
+    action: gaia.phase.generate
+    depends_on:
+      - init_gaia
+    parameters:
+      project: $project_name
+      problem: $problem_statement
+
+  # 查看状态
+  - id: check_status
+    name: 查看项目状态
+    action: gaia.status
+    depends_on:
+      - start_phase_g
+    parameters:
+      project: $project_name
